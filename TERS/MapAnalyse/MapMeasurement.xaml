@@ -1,0 +1,17 @@
+﻿<Window x:Class="TERS.MapMeasurement"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TERS"
+        xmlns:oxy="http://oxyplot.org/wpf"
+        mc:Ignorable="d"
+        Title="MapMeasurement" Height="400" Width="600"
+        WindowStyle="ToolWindow" Closed="Window_Closed">
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="Save" Command="{Binding SaveCmd}"/>
+        </Menu>
+        <oxy:PlotView Name="PlotView" Model="{Binding Model}" Margin="0,0,10,0"/>
+    </DockPanel>
+</Window>

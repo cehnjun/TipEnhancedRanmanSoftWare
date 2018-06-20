@@ -1,0 +1,73 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TERS"
+        xmlns:oxy="http://oxyplot.org/wpf"
+        xmlns:pt="http://propertytools.org/wpf" x:Class="TERS.MapAnalyse"
+        mc:Ignorable="d"
+        Title="MapAnalyse" Height="600" Width="600" Closed="Window_Closed">
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="File">
+                <MenuItem Header="Load" Command="{Binding LoadCmd}"/>
+                <MenuItem Header="Save" Command="{Binding SaveCmd}"/>
+                <Separator/>
+                <MenuItem Header="Setting" Command="{Binding SettingCmd}" CommandParameter="set"/>
+                <MenuItem Header="Reset" Command="{Binding SettingCmd}" CommandParameter="reset"/>
+                <Separator/>
+                <MenuItem Header="Exit" Click="Exit_Click"/>
+            </MenuItem>
+            <MenuItem Header="Data">
+                <MenuItem Header="Backgound">
+                    <MenuItem Header="BCS" Command="{Binding BCSCmd}"/>
+                    <MenuItem Header="Adjust BCS" Command="{Binding AdjBCS}"/>
+                </MenuItem>
+                <MenuItem Header="Image Repair">
+                    <MenuItem Header="Criminisi" Command="{Binding CriminisiCmd}"/>
+                    <MenuItem Header="TV" Command="{Binding TVCmd}"/>
+                </MenuItem>
+                <MenuItem Header="Tip Deconv">
+                    <MenuItem Header="DeconvB" Command="{Binding DeconvBCmd}"/>
+                    <MenuItem Header="DeconvR" Command="{Binding DeconvRCmd}"/>
+                </MenuItem>
+                <MenuItem Header="HistEQ" Command="{Binding HistEQCmd}"/>
+                <MenuItem Header="Resize" Command="{Binding ResizeCmd}"/>
+                <MenuItem Header="Filter">
+                    <MenuItem Header="Bwt Notchfilt" Command="{Binding FilterCmd}" CommandParameter="Bwt"/>
+                    <MenuItem Header="SpFilter" Command="{Binding FilterCmd}" CommandParameter="Sp"/>
+                    <MenuItem Header="FqFilter" Command="{Binding FilterCmd}" CommandParameter="Fq"/>
+                </MenuItem>
+            </MenuItem>
+        </Menu>
+        <StatusBar DockPanel.Dock="Bottom">
+            <StatusBarItem>
+                <Label Content="{Binding Message}"/>
+            </StatusBarItem>
+        </StatusBar>
+        <oxy:PlotView Name="MapPlotView" 
+                      Model="{Binding MapModel}"
+                      Margin="0,0,10,0" 
+                      SizeChanged="PlotView_SizeChanged">
+            <oxy:PlotView.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Matrix">
+                        <MenuItem Header="Rotate Clockwise" Command="{Binding RotateCmd}" CommandParameter="RC"/>
+                        <MenuItem Header="Rotate CounterClockwise" Command="{Binding RotateCmd}" CommandParameter="RCC"/>
+                        <MenuItem Header="Transpose" Command="{Binding RotateCmd}" CommandParameter="TR"/>
+                    </MenuItem>
+                    <MenuItem Header="Plot">
+                        <MenuItem Header="Surf" Command="{Binding PlotCmd}" CommandParameter="Surf"/>
+                        <MenuItem Header="Mesh" Command="{Binding PlotCmd}" CommandParameter="Mesh"/>
+                    </MenuItem>
+                    <!--<MenuItem Header="Cut" Command="{Binding CutCmd}" IsCheckable="True"/>-->
+                    <MenuItem Header="ColorAxis" Command="{Binding ColorAxisChangeCmd}"/>
+                    <pt:EnumMenuItem Header="Measurement" SelectedValue="{Binding CurrMeasurementOption}"/>
+                    <Separator/>
+                    <MenuItem Header="Reset" Command="{Binding ResetCmd}"/>
+                </ContextMenu>
+            </oxy:PlotView.ContextMenu>
+        </oxy:PlotView>
+    </DockPanel>
+</Window>
