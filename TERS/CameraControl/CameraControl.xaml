@@ -31,9 +31,9 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
 
-                        <Button Grid.Column="0" Content="open" Margin="5 5 5 5"/>
-                        <Button Grid.Column="1" Content="start" Margin="5 5 5 5"/>
-                        <Button Grid.Column="2" Content="stop" Margin="5 5 5 5"/>
+                        <Button Grid.Column="0" Content="Open" Margin="5 5 5 5"/>
+                        <Button Grid.Column="1" Content="Start" Margin="5 5 5 5"/>
+                        <Button Grid.Column="2" Content="Stop" Margin="5 5 5 5"/>
 
                     </Grid>
                 </StackPanel>
