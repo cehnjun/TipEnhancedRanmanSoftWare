@@ -7,24 +7,19 @@
         xmlns:wfi ="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration"
         xmlns:local="clr-namespace:TERS"
         mc:Ignorable="d"
-        Title="CameraControl" Height="400" Width="600">
-    <DockPanel>
-        <Menu DockPanel.Dock="Top">
-            <MenuItem Header="File"/>
-        </Menu>
-        <StatusBar DockPanel.Dock="Bottom">
-            <StatusBarItem>
-            </StatusBarItem>
-        </StatusBar>
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="200"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                
-                <StackPanel Grid.Column="0" Margin="3 3 3 3">
+        Title="CameraControl" Height="600" Width="800">
+    <Grid>
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Border Padding="3" Grid.Column="0">
+            <GroupBox Header="Control">
+                <StackPanel>
                     <Grid>
-                        
+
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
@@ -36,13 +31,18 @@
                         <Button Grid.Column="2" Content="Stop" Margin="5 5 5 5"/>
 
                     </Grid>
+
                 </StackPanel>
-                
-                <wfi:WindowsFormsHost Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Top">
-                    <wf:PictureBox x:Name="CameraImage">
-                         
+            </GroupBox>
+        </Border>
+
+        <Border Padding="3" Grid.Column="1">
+            <GroupBox Header="Image">
+                <wfi:WindowsFormsHost HorizontalAlignment="Right" VerticalAlignment="Top">
+                    <wf:PictureBox x:Name="CameraImage" BackColor="Black" ImageLocation="C:\Users\Administrator\Desktop\TERS1.jpg" SizeMode="StretchImage">
                     </wf:PictureBox>
                 </wfi:WindowsFormsHost>
-            </Grid>
-    </DockPanel>
+            </GroupBox>
+        </Border>
+    </Grid>
 </Window>
