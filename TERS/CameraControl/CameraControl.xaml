@@ -9,38 +9,30 @@
         mc:Ignorable="d"
         Title="CameraControl" Height="600" Width="800">
     <Grid>
-        
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-
         <Border Padding="3" Grid.Column="0">
             <GroupBox Header="Control">
                 <StackPanel>
                     <Grid>
-
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-
                         <Button Grid.Column="0" Content="Open" Margin="5 5 5 5"/>
                         <Button Grid.Column="1" Content="Start" Margin="5 5 5 5"/>
                         <Button Grid.Column="2" Content="Stop" Margin="5 5 5 5"/>
-
                     </Grid>
-
                 </StackPanel>
             </GroupBox>
         </Border>
-
         <Border Padding="3" Grid.Column="1">
             <GroupBox Header="Image">
                 <wfi:WindowsFormsHost HorizontalAlignment="Right" VerticalAlignment="Top">
-                    <wf:PictureBox x:Name="CameraImage" BackColor="Black" ImageLocation="C:\Users\Administrator\Desktop\TERS1.jpg" SizeMode="StretchImage">
-                    </wf:PictureBox>
+                    <wf:PictureBox x:Name="CameraImage" ImageLocation="C:\Users\Administrator\Desktop\TERS1.jpg" SizeMode="StretchImage" />
                 </wfi:WindowsFormsHost>
             </GroupBox>
         </Border>
