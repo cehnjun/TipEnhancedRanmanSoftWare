@@ -45,15 +45,5 @@ namespace TERS
         {
             this.Close();
         }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void MenuItem_Click_1()
-        {
-
-        }
     }
 }
