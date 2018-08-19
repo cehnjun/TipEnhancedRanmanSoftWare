@@ -149,16 +149,9 @@ namespace TERS
         public ICommand CameraControlCmd => new RelayCommand(() =>
         {
             CameraControl.CameraControl ca;
-            if (currData == null)
-            {
-                ca = new CameraControl.CameraControl();
-                ca.Show();
-            }
-            else
-            {
-                ca = new CameraControl.CameraControl();
-                ca.Show();
-            }
+            ca = new CameraControl.CameraControl();
+            ca.Show();
+
         });
         public ICommand SettingCmd => new RelayCommand<string>(para => 
         {
