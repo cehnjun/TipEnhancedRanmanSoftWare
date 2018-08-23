@@ -51,6 +51,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Basler.Pylon, Version=1.0.0.0, Culture=neutral, PublicKeyToken=e389355f398382ab, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\Basler\pylon 5\Development\Assemblies\Basler.Pylon\x64\Basler.Pylon.dll</HintPath>
+    </Reference>
     <Reference Include="OxyPlot, Version=2.0.0.0, Culture=neutral, PublicKeyToken=638079a8f0bd61e9, processorArchitecture=MSIL">
       <HintPath>..\packages\OxyPlot.Core.2.0.0-unstable0973\lib\net45\OxyPlot.dll</HintPath>
     </Reference>
@@ -213,6 +217,10 @@
     <ProjectReference Include="..\Camapi\CamApi.csproj">
       <Project>{3cd609bb-d16e-4b1d-b7e9-066cb3029424}</Project>
       <Name>CamApi</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CameraApi\CameraApi.csproj">
+      <Project>{e80e9df1-4b6e-44af-ab18-5e44db50b923}</Project>
+      <Name>CameraApi</Name>
     </ProjectReference>
     <ProjectReference Include="..\MatlabApi\MatlabApi.csproj">
       <Project>{e1d6ce62-c384-4b3c-aaca-f1233b39fb7b}</Project>

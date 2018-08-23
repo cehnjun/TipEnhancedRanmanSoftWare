@@ -7,7 +7,8 @@
         xmlns:wfi ="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration"
         xmlns:local="clr-namespace:TERS"
         mc:Ignorable="d"
-        Title="CameraControl" Height="600" Width="800">
+        Title="CameraControl" Height="600" Width="800"
+        Loaded="Window_Loaded">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"/>
@@ -22,19 +23,47 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <Button Grid.Column="0" Content="Open" Margin="5 5 5 5"/>
-                        <Button Grid.Column="1" Content="Start" Margin="5 5 5 5"/>
+                        <Button Grid.Column="0" Content="Open" Margin="5 5 5 5" Click="Button_Click"/>
+                        <Button Grid.Column="1" Content="Start" Margin="5 5 5 5" Command="{Binding startGrabCmd}"/>
                         <Button Grid.Column="2" Content="Stop" Margin="5 5 5 5"/>
                     </Grid>
+                    <TextBlock Margin="5 5 5 0">Devlist</TextBlock>
+                    <ListView x:Name="deviceListView" SelectionChanged="deviceListView_SelectionChanged" Height="100"  Margin="5 5 5 5">
+
+                        <ListView.View>
+                            <GridView AllowsColumnReorder="True">
+                                <GridViewColumn  Header="相机"
+                                    Width="200"/>
+                            </GridView>
+                        </ListView.View>
+
+                    </ListView>
+                    <TextBlock Margin="5 5 5 5">PixelFormat</TextBlock>
+                    <ComboBox>
+                        <ComboBoxItem/>
+                        <ComboBoxItem/>
+                        <ComboBoxItem/>
+                        <ComboBoxItem/>
+                    </ComboBox>
+                    <TextBlock Margin="5 5 5 5">Width</TextBlock>
+                    <Slider/>
+                    <TextBlock Margin="5 5 5 5">Height</TextBlock>
+                    <Slider/>
+                    <TextBlock Margin="5 5 5 5">Gain</TextBlock>
+                    <Slider/>
+                    <TextBlock Margin="5 5 5 5">Exposure Time</TextBlock>
+                    <Slider/>
                 </StackPanel>
             </GroupBox>
         </Border>
         <Border Padding="3" Grid.Column="1">
             <GroupBox Header="Image">
-                <wfi:WindowsFormsHost HorizontalAlignment="Right" VerticalAlignment="Top">
-                    <wf:PictureBox x:Name="CameraImage" ImageLocation="C:\Users\Administrator\Desktop\TERS1.jpg" SizeMode="StretchImage" />
-                </wfi:WindowsFormsHost>
+                <!--<wfi:WindowsFormsHost HorizontalAlignment="Right" VerticalAlignment="Top">
+                    <wf:PictureBox x:Name="MicroVideo" SizeMode="StretchImage"></wf:PictureBox>
+                </wfi:WindowsFormsHost>-->
+                <Image x:Name="MicroVideo"></Image>
             </GroupBox>
+            
         </Border>
     </Grid>
 </Window>
