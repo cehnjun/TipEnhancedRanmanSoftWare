@@ -7,11 +7,11 @@
         xmlns:wfi ="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration"
         xmlns:local="clr-namespace:TERS"
         mc:Ignorable="d"
-        Title="CameraControl" Height="600" Width="800"
-        Loaded="Window_Loaded">
+        Title="CameraControl" Height="450" Width="800"
+        Loaded="Window_Loaded" Closed="Window_Closed">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="240"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Border Padding="3" Grid.Column="0">
@@ -19,21 +19,20 @@
                 <StackPanel>
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="1.8*"/>
+                            <ColumnDefinition Width="2.8*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <Button Grid.Column="0" Content="Open" Margin="5 5 5 5" Click="Button_Click"/>
-                        <Button Grid.Column="1" Content="Start" Margin="5 5 5 5" Command="{Binding startGrabCmd}"/>
-                        <Button Grid.Column="2" Content="Stop" Margin="5 5 5 5"/>
+                        <Button Grid.Column="0" Content="OneShot" Margin="5 5 0 5" Click="OneShotButton_Click"/>
+                        <Button Grid.Column="1" Content="ContinuousShot" Margin="5 5 0 5" Click="ContinuousShotButton_Click"/>
+                        <Button Grid.Column="2" Content="Stop" Margin="5 5 5 5" Click="StopButton_Click"/>
                     </Grid>
-                    <TextBlock Margin="5 5 5 0">Devlist</TextBlock>
+                    <TextBlock Margin="5 5 5 0">DevList</TextBlock>
                     <ListView x:Name="deviceListView" SelectionChanged="deviceListView_SelectionChanged" Height="100"  Margin="5 5 5 5">
 
                         <ListView.View>
                             <GridView AllowsColumnReorder="True">
-                                <GridViewColumn  Header="相机"
-                                    Width="200"/>
+                                <GridViewColumn  Header="相机" Width="210"/>
                             </GridView>
                         </ListView.View>
 
@@ -61,7 +60,7 @@
                 <!--<wfi:WindowsFormsHost HorizontalAlignment="Right" VerticalAlignment="Top">
                     <wf:PictureBox x:Name="MicroVideo" SizeMode="StretchImage"></wf:PictureBox>
                 </wfi:WindowsFormsHost>-->
-                <Image x:Name="MicroVideo"></Image>
+                <Image x:Name="MicroVideo" ></Image>
             </GroupBox>
             
         </Border>

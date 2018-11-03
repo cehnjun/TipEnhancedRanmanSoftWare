@@ -45,7 +45,6 @@ namespace TERS.CameraControl
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             UpdateDeviceList();
-
         }
 
         [DllImport("gdi32.dll", EntryPoint = "DeleteObject")]
@@ -407,7 +406,7 @@ namespace TERS.CameraControl
             MessageBox.Show("Exception caught:\n" + exception.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void ContinuousShotButton_Click(object sender, RoutedEventArgs e)
         {
             ContinuousShot(); // Start the grabbing of images until grabbing is stopped.
         }
@@ -419,6 +418,50 @@ namespace TERS.CameraControl
                 // Start the grabbing of images until grabbing is stopped.
                 camera.Parameters[PLCamera.AcquisitionMode].SetValue(PLCamera.AcquisitionMode.Continuous);
                 camera.StreamGrabber.Start(GrabStrategy.OneByOne, GrabLoop.ProvidedByStreamGrabber);
+            }
+            catch (Exception exception)
+            {
+                ShowException(exception);
+            }
+        }
+
+        // Starts the grabbing of a single image and handles exceptions.
+        private void OneShot()
+        {
+            try
+            {
+                // Starts the grabbing of one image.
+                camera.Parameters[PLCamera.AcquisitionMode].SetValue(PLCamera.AcquisitionMode.SingleFrame);
+                camera.StreamGrabber.Start(1, GrabStrategy.OneByOne, GrabLoop.ProvidedByStreamGrabber);
+            }
+            catch (Exception exception)
+            {
+                ShowException(exception);
+            }
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            DestroyCamera();
+        }
+
+        private void OneShotButton_Click(object sender, RoutedEventArgs e)
+        {
+            OneShot(); // Start the grabbing of one image.
+        }
+
+        private void StopButton_Click(object sender, RoutedEventArgs e)
+        {
+            Stop();
+        }
+
+        // Stops the grabbing of images and handles exceptions.
+        private void Stop()
+        {
+            // Stop the grabbing.
+            try
+            {
+                camera.StreamGrabber.Stop();
             }
             catch (Exception exception)
             {
